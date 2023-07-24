@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %} Products {% endblock title%} 
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    {% if query %}
+    <p>Showing results for "{{ query }}"</p>
+    {% endif %}
+    <div class="row">
+      {% for result in results %}
+      <div class="col-sm-6">
+        
+          <div class="card shadow mb-3 rounded">
+            <img src="{{ result.cover_photo.url }}" class="card-img-top" alt="..." width="450px" height="290px">
+            <div class="card-body">
+              <h5 class="card-title">{{ result.book_name }}</h5>
+              <a href="{{ result.pdf.url }}" class="btn btn-secondary">View Pdf</a>
+              <a href="{{ result.pdf.url }}" class="btn btn-secondary" download>Download Book</a>
+            </div>
+          </div>
+        
+      </div>
+      {% endfor %}
+    </div>
+    <!-- for Book search -->
+    <div class="row">
+        {% for result in results1 %}
+        <div class="col-sm-6">
+          
+            <div class="card shadow mb-3 rounded">
+              <img src="{{ result.question_image.url }}" class="card-img-top" alt="..." width="450px" height="290px">
+              <div class="card-body">
+                <h5 class="card-title">{{ result.subject_name }}</h5>
+                <h5 class="card-title">{{result.question_type}}</h5>
+                      <p class="card-text">Question Year: <span style="font-weight: 900;">{{result.question_year}}</span></p>
+                <a href="{{ result.question_image.url }}" class="btn btn-secondary">View Question</a>
+                <a href="{{ result.question_image.url }}" class="btn btn-secondary" download>Download Question</a>
+              </div>
+            </div>
+          
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- end book search -->
+  </div>
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %} 
+{% block title %} {{request.user}}&nbsp; - Profile {% endblock title%} 
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mt-3 mb-3">
+                {% if customers %}
+                <div class="card mb-3" style="border: none;">
+                    <div class="row g-0">
+                      <div class="col-md-3">
+                        
+                        {% if customers.profile_pic %}
+                        <img src="{{customers.profile_pic.url}}" class="img-fluid rounded-start" alt="..." width="225px" height="225px">
+                        {% else %}
+                        <img src="{% static 'images/avatar3.png' %}" class="img-fluid rounded-start" alt="..."width="225px" height="225px">
+                        {% endif %}
+                         </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title"><span style="font-weight: 800;">Username:&nbsp;</span>{{customers.user}}</h5>
+                          <p class="card-text"><span style="font-weight: 800;">Name:&nbsp;</span>{{customers.name}}</p>
+                          <p class="card-text"><span style="font-weight: 800;">Email:&nbsp;</span>{{customers.user.email}}</p>
+                          <p class="card-text"><span style="font-weight: 800;">Address:&nbsp;</span>{{customers.address}}</p>
+                          <p class="card-text"><span style="font-weight: 800;">Phone:&nbsp;</span>{{customers.phone}}</p>
+                          <a href="{% url 'other:update_profile' %}" class="btn btn-warning">Update Profile</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+         
+                  {% else %}
+                  <div class="card mb-3 mt-3" style="border: none;">
+                    <div class="row g-0">
+                      <div class="col-md-3">
+                        <img src="{% static 'images/avatar3.png' %}" class="img-fluid rounded-start" alt="..."width="225px" height="225px">
+                         </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title"><span style="font-weight: 800;">Username:&nbsp;</span>{{user_infos.username}}</h5>
+                          <p class="card-text"><span style="font-weight: 800;">Email:&nbsp;</span>{{user_infos.email}}</p> 
+                          <a href="{% url 'other:update_profile' %}" class="btn btn-warning">Update Profile</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+         
+        </div>
+        </div>
+{% endblock content %}
+    

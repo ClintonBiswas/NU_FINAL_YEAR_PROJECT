@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% block title %} Project details {% endblock title%} 
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+          <div class="mb-3" style="background-color: #EEEEEE;">
+            <p class="text-center mt-3" style="font-weight: bold; font-size: large;">
+                {{project.title}} Details
+            </p>
+        </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+              <div class="card mb-3">
+                <img src="{{project.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{project.title}}</h5>
+                  <p class="card-text">{{project.bio|linebreaks}}</p>
+                  <a href="{{project.live_demo}}" class="btn btn-primary card-link">Live Demo</a>
+                    <a href="{{project.github_code}}" class="btn btn-primary card-link">View Code</a>
+                </div>
+              </div>
+              <!-- <div class="card mb-3 p-3" style="border: none;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{project.image.url}}" class="img-fluid rounded-start" alt="..." style="width: 100%; height: 100%;">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{project.title}}</h5>
+                      <p class="card-text">{{project.bio|linebreaks}}</p>
+                      <a href="{{project.live_demo}}" class="btn btn-primary card-link">Live Demo</a>
+                      <a href="{{project.github_code}}" class="btn btn-primary card-link">View Code</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+{% endblock content %}

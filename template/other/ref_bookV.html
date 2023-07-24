@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% block title %} Books {% endblock title%} 
+{% load static %}
+
+{% block content %}
+<div class="container">
+        <h1 class="textheader mt-3">**Our Refference Books**</h1>
+        <div class="row">
+            <hr>
+            {% for book in books %}
+                <div class="col-sm-4">
+                    <div class="card mb-3">
+                        <img src="{{book.cover_photo.url}}" class="card-img-top" alt="..." width="450px" height="290px">
+                        <div class="card-body">
+                          <h5 class="card-title">{{book.book_name}}</h5>
+                          <p class="card-text">{{book.bio|slice:":250"}}..</p>
+                          <a href="{{book.pdf.url}}" class="btn btn-primary" download>Download Book</a>
+                          <a href="{{book.pdf.url}}" class="btn btn-primary">View Pdf</a>
+                        </div>
+                      </div>
+                </div>
+            {% endfor %}
+                
+        </div>
+    </div>
+{% endblock content %}

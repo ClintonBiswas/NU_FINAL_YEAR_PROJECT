@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+{% block title %} Products {% endblock title%} 
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-3 mb-3">
+        <div class="mb-3" style="background-color: #EEEEEE;">
+            <p class="text-center p-2" style="font-weight: bold; font-size: x-large;">Our {{category}} Products</p>
+        </div>
+        
+            <div class="col-sm-3" style="background-color: #EEEEEE;">
+                <h4 class="text-center p-2">Our Category</h4>
+                <hr>
+                <ul><li><a href="{% url 'other:product' %}" style="text-decoration: none;">All Products</a></li></ul>
+                {% for category in categorys %}
+                    <ul>
+                        <li><a href="{% url 'other:category-product' category.id %}" style="text-decoration: none;">{{category.name}}</a></li>
+                    </ul>
+                {% endfor %}
+                    
+            </div>
+            <div class="col-sm-9">
+                <div class="row">
+                    
+                    
+                    {% if products %}
+                    {% for product in products %}
+                    <div class="col-sm-4">
+                        <div class="card mb-2" >
+                            <img src="{{product.image.url}}" class="card-img-top" alt="..." style="height: 250px;">
+                            <div class="card-body">
+                              <a href="{% url 'other:product-detail' product.slug %}" class="card-title" style="font-size: larger; font-weight: 400; text-decoration: none;">{{product.title|slice:":25"|default:""}}{% if product.title|length > 25 %}...{% endif %}</a>
+                              <p class="card-text">{{product.description|slice:":50"}} ...</p>
+                              <a href="{% url 'other:product-detail' product.slug %}" class="btn btn-primary" style="width: 100%;">View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                <div class="alert alert-warning" role="alert">
+                    No Products Available
+                  </div>
+                    {% endif %}
+                        
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

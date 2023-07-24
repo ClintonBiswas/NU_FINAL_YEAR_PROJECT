@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% block title %} Previous Question {% endblock title%} 
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1 class="textheader mt-3">**Upcomming Programming Contest**</h1>
+    <div class="row mt-3 mb-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Organization Name</th>
+            <th scope="col">Contest Name</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Join Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contest in contests %}
+          <tr>
+            <td>{{contest.organization_name}}</td>
+            <td>{{contest.contest_name}}</td>
+            <td>{{contest.duration}}</td>
+            <td><a href="{{contest.join_link}}">Join Link</a></td>
+          </tr>
+          {% endfor%}
+        </tbody>
+      </table>
+            </div>
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %} 
+{% block title %} Update-Profile {% endblock title%} 
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+   <div class="container">
+    <div class="row mt-3 mb-3">
+        <div class="mb-3" style="background-color: #EEEEEE;">
+            <p style="font-weight: bold; font-size: larger; text-align: center;">Update Your Profile</p>
+        </div>
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <div class="card p-3">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if customer_data %}
+                    <div class="mb-3">
+                      <label for="id_name" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="id_name" name="name" value="{{customer_data.name}}">
+                    </div>
+                    
+                    <div class="mb-3">
+                      <label for="id_address" class="form-label">Address</label>
+                      <input type="text" class="form-control" id="id_address" name="address" value="{{customer_data.address}}">
+                    </div>
+                    
+                    <div class="mb-3">
+                      <label for="id_phone" class="form-label">Phone</label>
+                      <input type="text" class="form-control" id="id_phone" name="phone" value="{{customer_data.phone}}">
+                    </div>
+                    
+                    <div class="mb-3">
+                      <label for="id_profile_pic" class="form-label">Profile Picture</label>
+                      <input type="file" class="form-control" id="id_profile_pic" name="profile_pic" accept="image/*">
+                    </div>
+                    
+                    {% endif %}
+                    
+                    <button type="submit" class="btn btn-primary mt-3" style="width: 100%;">Update Profile</button>
+                  </form>
+                  
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+   </div>
+{% endblock content %}
+    
