@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% block title %} Update Skill {% endblock title%} 
+{% load static %}
+
+{% block content %}      
+
+{% load crispy_forms_tags %}
+
+<!--Login--> 
+<div class="container py-5">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <h1 class="textheader">**Update Skills**</h1>
+      <div class="card p-3">
+        <form method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <p>Debug: User PK = {{ form.instance.user.pk }}</p>
+        <button class="btn btn-primary mt-2" type="submit" style="width: 100%;">Update Skills</button>
+        </form>
+      </div>
+      
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
+
+{% endblock %}

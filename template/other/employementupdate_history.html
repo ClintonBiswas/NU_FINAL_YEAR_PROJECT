@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+{% block title %} Update Employement History {% endblock title%} 
+{% load static %}
+
+{% block content %}      
+
+{% load crispy_forms_tags %}
+
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <h1 class="textheader">**Update Employement History**</h1>
+      <div class="card p-3">
+        <form method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+        <button class="btn btn-primary mt-2" type="submit" style="width: 100%;">Update Employee</button>
+        </form>
+      </div>
+      
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
+
+{% endblock %}

@@ -84,3 +84,28 @@ ul.a {
 .social-icons-row a i:hover{
   color: #70C332;
 }
+.custom-padding {
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+}
+
+.skill-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skill-container .badge {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.btn-circle.btn-xl {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  border-radius: 50%; /* Use 50% to create a perfect circle */
+  font-size: 15px;
+  text-align: center;
+  border: 1px solid gainsboro;
+  color: #14a852;
+}

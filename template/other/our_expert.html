@@ -1,0 +1,44 @@
+{% extends 'base.html' %} 
+{% block title %} Experts {% endblock title%} 
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-3 mb-3">
+            <div class="mb-3" style="background-color: #EEEEEE;">
+                <p class="text-center p-2" style="font-weight: bold; font-size: x-large;">Our Experts</p>
+            </div>
+            <div class="col-sm-3" style="background-color: #EEEEEE;">
+                <h4 class="text-center p-2">Our Category</h4>
+                <hr>
+                <ul><li><a href="{% url 'other:expert-profile' %}" style="text-decoration: none;">All Categories</a></li></ul>
+                {% for category in categories %}
+                    <ul>
+                        <li><a href="{% url 'other:expert-category' slug=category.slug %}" style="text-decoration: none;">{{category.name}}</a></li>
+                    </ul>
+                {% endfor %}
+                    
+            </div>
+            <div class="col-sm-9">
+                <div class="row">
+                    
+                    {% for expert in experts %}
+                        <div class="col-sm-4">
+                            <div class="card mb-2">
+                                <img src="{{expert.profile_pic.url}}" class="card-img-top" alt="..." style="height: 250px;">
+                                <div class="card-body">
+                                  <a href="{% url 'other:freelance-profile' pk=expert.user.pk%}" class="card-title" style="font-size: larger; font-weight: 400; text-decoration: none;">{{expert.full_name}}</a>
+                                  <p class="card-text">{{expert.title}}</p>
+                                  <p class="card-text fw-bold">{{expert.hourly_rate}}&nbsp; per hour</p>
+                                  <a href="{% url 'other:freelance-profile' pk=expert.user.pk%}" class="btn btn-primary" style="width: 100%;">View Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    
